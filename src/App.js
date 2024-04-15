@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import RegisterForm from "./components/RegisterForm";
+import AdminPanel from "./components/AdminPanel";
+import CreateEmployee from "./components/CreateEmployee";
+import EditEmployee from "./components/EditEmployee";
+import DeleteEmployee from "./components/DeleteEmployee.js";
 
-function App() {
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <RegisterForm />,
+  },
+  {
+    path: "/adminpanel",
+    element: <AdminPanel />,
+  },
+  {
+    path: "/CreateEmployee",
+    element: <CreateEmployee />,
+  },
+  {
+    path: "/DeleteEmployee/:empid",
+    element: <DeleteEmployee />,
+  },
+  {
+    path: "/EditEmployee/:empid",
+    element: <EditEmployee />,
+  },
+]);
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <RouterProvider router={appRouter} />
     </div>
   );
-}
+};
 
 export default App;
